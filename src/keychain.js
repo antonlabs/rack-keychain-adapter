@@ -88,8 +88,7 @@ KeychainAccess.prototype.getPassword = function(opts, fn) {
 
     security.on('close', function(code, signal) {
         if (code !== 0) {
-            err = new KeychainAccess.errors.PasswordNotFoundError();
-            fn(err, null);
+            fn(undefined, null);
             return;
         }
 
@@ -116,8 +115,7 @@ KeychainAccess.prototype.getPassword = function(opts, fn) {
             }
         }
         else {
-            err = new KeychainAccess.errors.PasswordNotFoundError();
-            fn(err, null);
+            fn(undefined, null);
         }
     });
 };
@@ -236,8 +234,7 @@ KeychainAccess.prototype.deletePassword = function(opts, fn) {
 
     security.on('close', function(code, signal) {
         if (code !== 0) {
-            err = new KeychainAccess.errors.PasswordNotFoundError();
-            fn(err);
+            fn(undefined);
             return;
         }
         fn(null);
