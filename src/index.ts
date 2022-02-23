@@ -1,0 +1,1 @@
+export {KeyChainAdapter} from './adapter';
