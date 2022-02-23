@@ -10,7 +10,7 @@ export class KeyChainAdapter extends AsyncPersistenceAdapter<string | null> {
     async getItem(key: string): Promise<string | null> {
         return new Promise((resolve, reject) =>
             keychain.getPassword({ account: this.account, service: key }, (err: any, data: string | null) => {
-                if(!err) {
+                if(err) {
                     return reject(err);
                 }
                 resolve(data);
@@ -21,7 +21,7 @@ export class KeyChainAdapter extends AsyncPersistenceAdapter<string | null> {
     async setItem(key: string, value: string | null): Promise<void> {
         return new Promise((resolve, reject) =>
             keychain.setPassword({ account: this.account, service: key, password: value }, (err: any) => {
-                if(!err) {
+                if(err) {
                     return reject(err);
                 }
                 resolve();
